@@ -1,0 +1,47 @@
+/* 基本スタイル */
+body { 
+    background: #000; color: #ccc; margin: 0; 
+    font-family: 'serif', 'Hiragino Mincho ProN', 'MS PMincho', serif;
+    display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden;
+}
+
+/* --- 1. スタート画面（元に戻した完全版） --- */
+#title-screen { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+    display: flex; flex-direction: column; justify-content: center; align-items: center; 
+    background: radial-gradient(circle, #200 0%, #000 100%); 
+    z-index: 1000; transition: opacity 1s; 
+}
+.flower-container { margin-bottom: 20px; }
+.title-flower { width: 300px; filter: drop-shadow(0 0 20px #f00); animation: flower-glow 4s infinite ease-in-out; }
+@keyframes flower-glow { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
+.game-title { font-size: 4rem; color: #f00; text-shadow: 0 0 20px #f00; margin: 10px 0; letter-spacing: 0.6rem; }
+.subtitle { color: #800; font-size: 1.2rem; margin-bottom: 40px; }
+.start-btn { 
+    background: transparent; border: 1px solid #f00; color: #f00; 
+    padding: 15px 60px; cursor: pointer; transition: 0.3s; font-size: 1.2rem;
+}
+.start-btn:hover { background: #600; color: #fff; box-shadow: 0 0 20px #f00; }
+
+/* --- 2. ゲーム本編レイアウト --- */
+#game-main-layout { display: flex; gap: 30px; padding: 20px; background: #000; border: 1px solid #333; }
+#visual-area { 
+    display: grid; gap: 2px; background: #111; padding: 10px; border: 1px solid #444;
+}
+.tile { width: 35px; height: 35px; display: flex; justify-content: center; align-items: center; background: #0d0d0d; font-size: 1.2rem; }
+.player-tile { color: #f00; text-shadow: 0 0 10px #f00; }
+
+#side-panel { width: 320px; display: flex; flex-direction: column; gap: 15px; }
+#game-message { background: #050505; border-left: 4px solid #600; padding: 15px; height: 160px; overflow-y: auto; font-size: 0.95rem; line-height: 1.6; }
+
+/* 操作ボタン（スタック防止のため視認性向上） */
+.move-controls { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 180px; margin: 0 auto; }
+.move-controls button { height: 50px; background: #1a1a1a; border: 1px solid #444; color: #fff; cursor: pointer; font-size: 1.2rem; }
+.move-controls button:hover { background: #333; }
+
+.battle-menu button { width: 100%; padding: 15px; background: #300; border: 1px solid #f00; color: #fff; cursor: pointer; }
+.menu-btn { margin-top: auto; padding: 10px; background: #222; border: 1px solid #444; color: #888; cursor: pointer; }
+
+/* 臨界演出 */
+.shake-effect { animation: shake 0.2s infinite; }
+@keyframes shake { 0%, 100% { transform: translate(0,0); } 25% { transform: translate(2px,-2px); } 50% { transform: translate(-2px,2px); } }

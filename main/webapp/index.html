@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>RESONANCE - 追想と再会の響き</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="title-screen">
+        <div class="flower-container">
+            <img src="images/higanbana.png" alt="彼岸花" class="title-flower">
+        </div>
+        <div class="title-logo">
+            <h1 class="game-title">RESONANCE</h1>
+            <p class="subtitle">― 追想と再会の響き ―</p>
+        </div>
+        <button class="start-btn" onclick="startGame()">START</button>
+    </div>
+
+    <div id="game-container" style="display: none; opacity: 0;">
+        <main id="game-main-layout">
+            <section id="map-section">
+                <h1 id="map-title">1-1 灰降る静寂の道</h1>
+                <div id="visual-area"></div>
+            </section>
+
+            <aside id="side-panel">
+                <div id="status-bar">
+                    <p>Name: 王子レオン</p>
+                    <p>Resonance: <span id="p-res">0%</span></p>
+                    <div id="res-stage-name">段階: 覚醒</div>
+                </div>
+
+                <div id="game-message">灰が静かに降り続ける道。足音は吸い込まれる。</div>
+
+                <div id="action-area"></div>
+
+                <button class="menu-btn" onclick="toggleMenu()">MENU / 状態確認</button>
+            </aside>
+        </main>
+    </div>
+
+    <script src="game.js"></script>
+    <script>
+        function startGame() {
+            const title = document.getElementById("title-screen");
+            const game = document.getElementById("game-container");
+            title.style.opacity = "0";
+            setTimeout(() => {
+                title.style.display = "none";
+                game.style.display = "flex";
+                setTimeout(() => game.style.opacity = "1", 50);
+                initGame();
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
